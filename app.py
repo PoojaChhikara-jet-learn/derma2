@@ -2,7 +2,8 @@ import os, io, base64, re, json
 from datetime import datetime
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 from PIL import Image
 
 # Flask setup
@@ -18,7 +19,7 @@ GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
 
-GEMINI_MODEL = "gemini-1.5-flash"
+GEMINI_MODEL = "gemini-2.5-flash"
 
 # ── Prompt ───────────────────────────────────────
 ANALYSIS_PROMPT = """
